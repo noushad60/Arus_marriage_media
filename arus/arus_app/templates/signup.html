@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Login-page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="colorlib.com">
+
+    <!-- MATERIAL DESIGN ICONIC FONT -->
+    <link rel="stylesheet" href="{% static 'fonts/material-design-iconic-font/css/material-design-iconic-font.css' %}">
+
+    <!-- DATE-PICKER -->
+    <link rel="stylesheet" href="{% static 'vendor/date-picker/css/datepicker.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor-2/bootstrap/css/bootstrap.css' %}">
+
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+			.form-submit{
+			height: 40px;
+			width: 100px;
+			background-color: #e4bd37;
+			border: none;
+
+
+			}
+			.row{
+			margin-top:10px;
+			}
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <!--        <div class="" style="border:1px solid black;">-->
+        <div class="image-holder col-sm-4 col-xl-4">
+            <img src="{% static 'images/marriage.jpg' %}" alt="">
+        </div>
+        <!--        </div>-->
+        <div class="col-sm-8 col-xl-8">
+            <form method="post" action="/registration/">
+                {% csrf_token %}
+                    <div class="form-header" style="margin-top:100px;">
+                        <h2 style="margin-bottom: 10px;">Create account</h2>
+                    </div>
+                    <div id="wiz">
+                        <!-- SECTION 1 -->
+
+
+                        <div class="form-row" style="margin-bottom: 26px;">
+                            <div class="col-lg-4 col-md-4 col-xs-4">
+                                <label for="">
+                                    Email
+                                </label>
+                            </div>
+                            <div class="form-holder col-lg-8 col-md-8 col-xs-8">
+                                <input class="form-control" type="text" name="username">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class=" col-lg-4 col-md-4  col-xs-4">
+                                <label for="password">
+                                    Password
+                                </label>
+                            </div>
+                            <div class="form-holder col-lg-8 col-md-8 col-xs-8">
+                                <input id="password" class="form-control" type="password" name="password"  required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col-sm-4"><label for=""> </label></div>
+                            <div class="form-holder col-sm-4">
+                                <a href="index.html"><input type="submit" class="form-submit rounded" value="create"></a>
+                            </div>
+                        </div>
+
+
+                        <!-- SECTION 2 -->
+
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/javascript.js' %}"></script>
+<!-- JQUERY STEP -->
+<!--		<script src="{% static 'js/jquery.steps.js' %}"></script>-->
+
+<!-- DATE-PICKER -->
+<script src="{% static 'vendor/date-picker/js/datepicker.js' %}"></script>
+<script src="{% static 'vendor/date-picker/js/datepicker.en.js' %}"></script>
+
+<script src="{% static 'js/main.js' %}"></script>
+<!-- Template created and distributed by Colorlib -->
+</body>
+</html>

@@ -1,0 +1,317 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>FormWizard_v4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="colorlib.com">
+
+    <!-- MATERIAL DESIGN ICONIC FONT -->
+    <link rel="stylesheet" href="{% static 'fonts/material-design-iconic-font/css/material-design-iconic-font.css' %}">
+
+    <!-- DATE-PICKER -->
+    <link rel="stylesheet" href="{% static 'vendor/date-picker/css/datepicker.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor-2/bootstrap/css/bootstrap.css' %}">
+
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+
+        label{
+            margin-left: 60px;
+        }
+        .btn{
+        height: 50px;
+        width: 150px;
+        border-radius: 10px;
+        color:white;
+        border: 1px transition white;
+        background: url("../static/images/form-wizard-bg.png");
+        }
+        .form-submit{
+			height: 50px;
+			width: 150px;
+			background-color: #e4bd37;
+			border: none;
+
+
+		}
+		form{
+		width:100%;
+		}
+		input,select,label{
+		 margin-top:15px;
+		 margin-left:0px;
+		}
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+
+
+    <form method="post" action="/">
+        {% csrf_token %}
+        <div class="form-header">
+            <h3>Register Your Information</h3>
+        </div>
+
+        <div class="row shadow-lg bg-transparent" style=" padding-bottom:15px;">
+            <div class="col-md-12 text-center py-0"><h3>Login information</h3></div>
+            <div class="col-md-2 text-center">
+                <label for="" class="">
+                    E-mail
+                </label>
+            </div>
+            <div class="form-holder col-md-4 input-position">
+                <input type="text" name="email" class="form-control">
+            </div>
+            <div class="col-md-2 text-center">
+                <label for="">
+                    Password
+                </label>
+            </div>
+            <div class="form-holder col-md-4 input-position">
+                <input type="password" name="password" class="form-control">
+            </div>
+        </div>
+
+
+        <!--first block-->
+        <div class="row shadow-lg bg-transparent my-5 py-3">
+
+            <div class="col-md-1 ">
+                <label for="">
+                    Full_name
+                </label>
+            </div>
+            <div class="form-holder col-md-3 input-position">
+                <input type="text" name="full_name" class="form-control">
+            </div>
+
+
+            <!--            2nd row-->
+            <div class="col-md-1">
+                <label for="">
+                    Gender:
+                </label>
+            </div>
+            <div class="col-md-1 form-holder text-center">
+                <select class="form-control">
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+                <i class="zmdi zmdi-caret-down px-3"></i>
+            </div>
+
+            <div class="col-md-1">
+                <label for="">
+                    Date of Birth
+                </label>
+            </div>
+            <div class="form-holder col-md-2">
+                <input type="date" class="form-control">
+            </div>
+            <div class="col-md-1">
+                <label for="">
+                    Height
+                </label>
+            </div>
+            <div class="col-md-2 form-holder">
+                <select class="form-control">
+                    <option disabled selected>Select your height</option>
+                    <option>5.0 Feet</option>
+                    <option>5.1 Feet</option>
+                </select>
+                <i class="zmdi zmdi-caret-down px-3"></i>
+            </div>
+            <!---->
+            <div class="col-md-1">
+                <label for="subject">
+                    Subject
+                </label>
+            </div>
+            <div class="form-holder col-md-3">
+                <select name="" id="subject" class="form-control">
+                    <!---->
+                </select>
+                <i class="zmdi zmdi-caret-down px-3"></i>
+            </div>
+        </div>
+
+        <!--        second block-->
+
+
+        <div class="row">
+            <div class="col-md-2 ">
+                <label for="">
+                    Education
+                </label>
+            </div>
+            <div class="form-holder col-sm-4">
+                <select name="education" id="education" class="form-control" onchange="subjectlist();"></select>
+                <i class="zmdi zmdi-caret-down "></i>
+            </div>
+
+
+            <div class="col-md-2">
+                <label for="">
+                    Profession
+                </label>
+            </div>
+            <div class="form-holder col-md-4">
+                <input type="text" class="form-control" data-language='en'>
+            </div>
+
+            <!---->
+            <!--            4th row-->
+
+            <div class="col-md-2"><label for="divisions">Select Division</label></div>
+            <div class="form-holder col-md-4">
+                <!---->
+                <select class="form-control" name="divisions" id="divisions" onchange="divisionsList();">
+                    <option disabled selected>Select Districts</option>
+                    <option class="option" value="Barishal">Barishal</option>
+                    <option class="option" value="Chattogram">Chattogram</option>
+                    <option class="option" value="Dhaka">Dhaka</option>
+                    <option class="option" value="Khulna">Khulna</option>
+                    <option class="option" value="Mymensingh">Mymensingh</option>
+                    <option class="option" value="Rajshahi">Rajshahi</option>
+                    <option class="option" value="Rangpur">Rangpur</option>
+                    <option class="option" value="Sylhet">Sylhet</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label for="">
+                    Designation
+                </label>
+            </div>
+            <div class="form-holder col-md-4">
+                <input type="text" class="form-control">
+            </div>
+        </div>
+
+
+        <!--third block-->
+        <div class="row">
+            <div class="col-md-2"><label for="distr">Select District</label></div>
+            <div class="form-holder col-md-4">
+                <select class="form-control" name="" id="distr" onchange="thanaList();"></select>
+            </div>
+            <!---->
+            <div class="col-md-2">
+                <label for="">
+                    Your Email:
+                </label>
+            </div>
+            <div class="form-holder col-md-4">
+                <input type="text" class="form-control">
+            </div>
+
+            <!---->
+            <!--            6th row-->
+
+            <div class="col-md-2"><label for="polic_sta">Select Police Station</label></div>
+            <div class="form-holder col-md-4">
+                <select class="form-control" name="" id="polic_sta"></select>
+            </div>
+            <!---->
+            <div class="col-md-2">
+                <label for="">
+                    Preferred System:
+                </label>
+            </div>
+            <div class="form-holder col-md-4">
+                <select name="" id="" class="form-control">
+                    <option value="canvas" class="option">Canvas</option>
+                    <option value="svg" class="option">Svg</option>
+                </select>
+                <i class="zmdi zmdi-caret-down"></i>
+            </div>
+
+        </div>
+
+        <!--        forth block-->
+        <div class="row">
+            <div class="col-md-2">
+                <label for="">
+                    Address
+                </label>
+            </div>
+            <div class="form-holder col-md-4">
+                <input type="text" class="form-control" placeholder="House no, road no, area">
+            </div>
+            <!---->
+            <div class="col-md-2">
+                <label for="">
+                    Course Title:
+                </label>
+            </div>
+            <div class="form-holder col-md-4">
+                <input type="text" class="form-control" placeholder="Ex. Intro to physic">
+            </div>
+
+            <!---->
+            <!--            8th row-->
+
+            <div class="col-md-2">
+                <label for="">
+                    Phone Number
+                </label>
+            </div>
+            <div class="form-holder col-md-4">
+                <input type="text" class="form-control" placeholder="Ex. 017 . . . . . . . .">
+            </div>
+            <!---->
+            <div class="col-md-2">
+                <label for="">
+                    Select Teacher:
+                </label>
+            </div>
+            <div class="form-holder col-md-4">
+                <select name="" id="" class="form-control">
+                    <option value="frances meyer" class="option">Frances Meyer</option>
+                    <option value="johan lucas" class="option">Johan Lucas</option>
+                    <option value="merry linn" class="option">Merry Linn</option>
+                </select>
+                <i class="zmdi zmdi-caret-down"></i>
+            </div>
+        </div>
+
+        <div class="checkbox-circle col-md-12" style="margin-bottom: 48px;">
+            <label>
+                <input type="checkbox" unchecked>I agree all statement in Terms & Conditions
+                <span class="checkmark"></span>
+            </label>
+        </div>
+        <div class="form-holder col-md-7">
+            <button type="submit" name="submit" class="form-submit float-right rounded">Submit</button>
+        </div>
+
+
+    </form>
+
+</div>
+
+
+<!--<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>-->
+
+<!-- JQUERY STEP -->
+<script src="{% static 'js/jquery.steps.js' %}"></script>
+<script src="{% static 'js/javascript.js' %}"></script>
+
+<!-- DATE-PICKER -->
+<script src="{% static 'vendor/date-picker/js/datepicker.js' %}"></script>
+<script src="{% static 'vendor/date-picker/js/datepicker.en.js' %}"></script>
+
+<script src="{% static 'js/main.js' %}"></script>
+<!-- Template created and distributed by Colorlib -->
+</body>
+</html>
